@@ -1,4 +1,4 @@
-# ta_speedtest
+# TA Speedtest
 Monitoring of the speed of a internet connection
 
 Motivation for this git was my need to monitor the speed of an internet connection with a Raspberry Pi.
