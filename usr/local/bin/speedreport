@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Copyright 2018 Thomas Arend
+# All Rights Reserved.
+
+# Lizenz GPL 3.0
+ 
+MSQLPWD='2ndVerySecurePwd' # <<<< provide your password for the database user. He must able to INSERT records in the report table.
+
+echo "INSERT INTO reports ( ping, download, upload , start ) VALUES ( $(/usr/local/bin/speedtest | grep ': ' | sed 's#.*: ##; s# .*$#,#') \"$(date --rfc-3339=ns)\");" \
+| tr -d '\n' \
+| mysql -u speedreport -p$MSQLPWD -b speedtest
