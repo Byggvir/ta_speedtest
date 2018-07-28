@@ -10,3 +10,8 @@ I wrote a small script to extract the ping, download and upload values and inser
 To display the last report I wrote a quick and dirty PHP-Page: speedreport.php
 
 This solution ist based on speedtest-cli from sivel. You will find it at https://github.com/sivel/speedtest-cli. Thanks to this work.
+
+Install speedtest-cli
+
+ git clone https://github.com/sivel/speedtest-cli.git
+ sudo python speedtest-cli/setup.py install

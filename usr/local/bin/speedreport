@@ -4,9 +4,11 @@
 # All Rights Reserved.
 
 # Lizenz GPL 3.0
- 
+
+type speedtest >/dev/null 2>&1 || ( echo -e "Speedtest not found.\nPlease install speedtest-cli from https://github.com/sivel/speedtest-cli.git"  ; exit )
+
 MSQLPWD='2ndVerySecurePwd' # <<<< provide your password for the database user. He must able to INSERT records in the report table.
 
-echo "INSERT INTO reports ( ping, download, upload , start ) VALUES ( $(/usr/local/bin/speedtest | grep ': ' | sed 's#.*: ##; s# .*$#,#') \"$(date --rfc-3339=ns)\");" \
+echo "INSERT INTO reports ( ping, download, upload , start ) VALUES ( $(speedtest | grep ': ' | sed 's#.*: ##; s# .*$#,#') \"$(date --rfc-3339=ns)\");" \
 | tr -d '\n' \
 | mysql -u speedreport -p$MSQLPWD -b speedtest
