@@ -25,7 +25,11 @@ sudo systemctp restart apache2
 
 This solution is based on speedtest-cli from sivel. You will find it at https://github.com/sivel/speedtest-cli. Thanks to this work.
 
-Install speedtest-cli
+How to install speedtest-cli
 
- git clone https://github.com/sivel/speedtest-cli.git
- sudo python speedtest-cli/setup.py install
+```bash
+git clone https://github.com/sivel/speedtest-cli.git
+sudo python speedtest-cli/setup.py install
+```
+
+For more ways to install speedtest-cli see https://github.com/sivel/speedtest-cli/blob/master/README.rst
