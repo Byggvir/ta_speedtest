@@ -17,9 +17,9 @@
 
 CREATE DATABASE speedtest;
 
-CREATE USER 'speedtest'@'localhost' IDERTIFIED BY '1stVerySecurePwd';
-CREATE USER 'speedreport'@'localhost' IDERTIFIED BY '2ndVerySecurePwd';
-CREATE USER 'speedviewer'@'localhost' IDERTIFIED BY '3rdVerySecurePwd';
+CREATE USER 'speedtest'@'localhost' IDENTIFIED BY '1stVerySecurePwd';
+CREATE USER 'speedreport'@'localhost' IDENTIFIED BY '2ndVerySecurePwd';
+CREATE USER 'speedviewer'@'localhost' IDENTIFIED BY '3rdVerySecurePwd';
 
 GRANT ALL PRIVILEGES ON speedtest.* TO 'speedtest'@'localhost' ;
 GRANT INSERT ON speedtest.* TO 'speedreport'@'localhost' ;
