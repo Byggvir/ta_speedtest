@@ -1,9 +1,3 @@
--- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: speedtest
--- ------------------------------------------------------
--- Server version	10.1.26-MariaDB-0+deb9u1
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -15,11 +9,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE speedtest;
+CREATE DATABASE IF NOT EXISTS speedtest;
 
-CREATE USER 'speedtest'@'localhost' IDENTIFIED BY '1stVerySecurePwd';
-CREATE USER 'speedreport'@'localhost' IDENTIFIED BY '2ndVerySecurePwd';
-CREATE USER 'speedviewer'@'localhost' IDENTIFIED BY '3rdVerySecurePwd';
+CREATE USER IF NOT EXISTS 'speedtest'@'localhost' IDENTIFIED BY '1stVerySecurePwd';
+CREATE USER IF NOT EXISTS 'speedreport'@'localhost' IDENTIFIED BY '2ndVerySecurePwd';
+CREATE USER IF NOT EXISTS 'speedviewer'@'localhost' IDENTIFIED BY '3rdVerySecurePwd';
 
 GRANT ALL PRIVILEGES ON speedtest.* TO 'speedtest'@'localhost' ;
 GRANT INSERT ON speedtest.* TO 'speedreport'@'localhost' ;
