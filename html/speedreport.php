@@ -44,7 +44,7 @@ if ($result = $mysqli->query($querylast)) {
 ?>
 <tr><td class="parameter">Ping:</td><td class="result"><?php echo sprintf("%0.3f",$row[1]); ?></td></tr>
 <tr><td class="parameter">Download:</td><td class="result"><?php echo sprintf("%0.3f", $row[2]) ; ?></td></tr>
-<tr><td class="parameter">Upload</td><td class="result"><?php echo sprintf("%0.3f",$row[3]) ; ?></td></tr>
+<tr><td class="parameter">Upload:</td><td class="result"><?php echo sprintf("%0.3f",$row[3]) ; ?></td></tr>
 <tr><td class="parameter">Datum:</td><td class="result"><?php echo preg_replace("/ /","<br />",$row[4]); ?></td></tr>
 <?php
 
