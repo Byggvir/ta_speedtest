@@ -14,11 +14,12 @@ To display the last report I wrote a quick and dirty PHP-Page: speedreport.php
 ## php7.0, php7.0-mysql
 
 Install php7.0, php7.0-mysql
- 
- sudo apt update
- sudo apt install php7.0 php7.0-mysql
- sudo systemctp restart apache2
- 
+
+```bash
+sudo apt update
+sudo apt install php7.0 php7.0-mysql
+sudo systemctp restart apache2
+``` 
 
 ## Speedtest-cli
 
