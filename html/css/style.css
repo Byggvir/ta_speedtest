@@ -1,0 +1,32 @@
+@charset UTF-8;
+/*
+Styles for ta_speedreport 
+
+Author: Thomas Arend
+Date: 29.07.2018
+Version 0.1.0
+*/
+
+table {
+  
+  border : 2px solid blue;
+  
+}
+td {
+  padding : 0.2em;
+  margin: 0.3em
+  
+}
+.verybig {
+   font-size : 1em;
+
+}
+
+.parameter {
+  background : lightgray ;
+
+}
+
+.result {
+  text-align : right ;
+}
