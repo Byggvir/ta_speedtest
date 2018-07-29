@@ -6,6 +6,16 @@
 <title>Speedtest</title>
 <style type="text/css">
 
+table {
+  
+  border : 2px solid blue;
+  
+}
+td {
+  padding : 0.2em;
+  margin: 0.3em
+  
+}
 .verybig {
    font-size :5em;
 
@@ -42,10 +52,10 @@ if ($result = $mysqli->query($querylast)) {
   while ($row = $result->fetch_row()) {
 
 ?>
-<tr><td class="parameter">Ping:</td><td class="result"><?php echo sprintf("%0.3f",$row[1]); ?></td></tr>
-<tr><td class="parameter">Download:</td><td class="result"><?php echo sprintf("%0.3f", $row[2]) ; ?></td></tr>
-<tr><td class="parameter">Upload:</td><td class="result"><?php echo sprintf("%0.3f",$row[3]) ; ?></td></tr>
-<tr><td class="parameter">Datum:</td><td class="result"><?php echo preg_replace("/ /","<br />",$row[4]); ?></td></tr>
+<tr><td class="parameter">Ping:</td><td class="result"><?php echo sprintf("%0.3f",$row[6]); ?></td><td>ms</td></tr>
+<tr><td class="parameter">Download:</td><td class="result"><?php echo sprintf("%0.3f", $row[7]/1000000) ; ?></td><td>MBit/s</td></tr>
+<tr><td class="parameter">Upload:</td><td class="result"><?php echo sprintf("%0.3f",$row[8]/1000000) ; ?></td><td>MBit/s</td></tr>
+<tr><td class="parameter">Datum:</td><td class="result" colspan="2"><?php echo preg_replace("/ /","<br />",$row[4]); ?></td></tr>
 <?php
 
   }

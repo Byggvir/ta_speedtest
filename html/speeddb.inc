@@ -5,7 +5,7 @@
 $dbhost = "localhost";
 $dbname = "speedtest";
 $dbuser = "speedviewer";
-$dbpass = "3rdVerySecurePwd";
+$dbpass = "Ahsoo3feeshaeyae";
 $dbdb   = "speedtest";
 
 $mysqli = new mysqli($dbhost, $dbuser,$dbpass,$dbdb);

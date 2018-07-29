@@ -1,0 +1,14 @@
+#!/bin/sh
+
+MYSQLPWD='Ahsoo3feeshaeyae' # <<<< provide your password for the database user. He must able to INSERT records in the report table.
+
+CSV="6601,NetCologne,Cologne,2018-07-28T23:31:30.217259Z,24.837100399054382,15.991,77438910.53590412,31639871.24293072,,46.90.145.60"
+
+RESULT=$( echo $CSV | sed 's#^#"#; s#,#","#g; s#"\([0-9\.]+\)"#\1#g; s#$#"#' )
+
+SQL="INSERT INTO reports (serverID, sponsor, server, start, distance, ping, download, upload, sharename, ip) VALUES ( ${RESULT} );"
+
+echo $SQL
+echo $SQL \
+| tr -d '\n' \
+| mysql -u speedreport -p$MYSQLPWD -b speedtest

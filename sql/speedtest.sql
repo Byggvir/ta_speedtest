@@ -11,9 +11,9 @@
 
 CREATE DATABASE IF NOT EXISTS speedtest;
 
-CREATE USER IF NOT EXISTS 'speedtest'@'localhost' IDENTIFIED BY '1stVerySecurePwd';
-CREATE USER IF NOT EXISTS 'speedreport'@'localhost' IDENTIFIED BY '2ndVerySecurePwd';
-CREATE USER IF NOT EXISTS 'speedviewer'@'localhost' IDENTIFIED BY '3rdVerySecurePwd';
+CREATE USER IF NOT EXISTS 'speedtest'@'localhost' IDENTIFIED BY 'Aireel1shib8GeiX';
+CREATE USER IF NOT EXISTS 'speedreport'@'localhost' IDENTIFIED BY 'Ahsoo3feeshaeyae';
+CREATE USER IF NOT EXISTS 'speedviewer'@'localhost' IDENTIFIED BY 'Ahsoo3feeshaeyae';
 
 GRANT ALL PRIVILEGES ON speedtest.* TO 'speedtest'@'localhost' ;
 GRANT INSERT ON speedtest.* TO 'speedreport'@'localhost' ;
@@ -32,11 +32,17 @@ DROP TABLE IF EXISTS `reports`;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `reports` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `ping` double NOT NULL,
-  `download` double NOT NULL,
-  `upload` double NOT NULL,
-  `start` datetime NOT NULL,
+/* 1 */  id mediumint(9) NOT NULL AUTO_INCREMENT, 
+/* 2 */  serverID INT,
+/* 3 */  sponsor VARCHAR(64),
+/* 4 */  server VARCHAR(64),
+/* 5 */  start datetime,
+/* 6 */  distance double,
+/* 7 */  ping double,
+/* 8 */  download double,
+/* 9 */  upload double,
+/* 10 */  sharename VARCHAR(64),
+/* 11 */  ip VARCHAR(39),
   PRIMARY KEY (`id`),
   KEY `start` (`start`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
