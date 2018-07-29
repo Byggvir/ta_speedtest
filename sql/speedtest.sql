@@ -41,7 +41,7 @@ CREATE TABLE `reports` (
 /* 7 */  ping double,
 /* 8 */  download double,
 /* 9 */  upload double,
-/* 10 */  sharename VARCHAR(64),
+/* 10 */  shareurl VARCHAR(64),
 /* 11 */  ip VARCHAR(39),
   PRIMARY KEY (`id`),
   KEY `start` (`start`)

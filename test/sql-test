@@ -8,7 +8,7 @@ RESULT=$( echo $CSV | sed 's#^#"#; s#,#","#g; s#"\([0-9\.]+\)"#\1#g; s#$#"#' )
 
 SQL="INSERT INTO reports (serverID, sponsor, server, start, distance, ping, download, upload, sharename, ip) VALUES ( ${RESULT} );"
 
-echo $SQL
 echo $SQL \
 | tr -d '\n' \
 | mysql -u speedreport -p$MYSQLPWD -b speedtest
+
