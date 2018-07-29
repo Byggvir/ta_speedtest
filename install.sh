@@ -2,6 +2,8 @@
 
 # 1. Create MariaDB database
 
+echo "MySQL password for user root:"
+
 mysql -u root -p -b < sql/speedtest.sql
 
 # 2. Copy HTML to web-server
