@@ -17,3 +17,9 @@ cp usr/local/bin/* /usr/local/bin/
 cat >> /etc/crontab <<EOF
 */10 *  * * *   root    /usr/local/bin/speedreport
 EOF
+
+type speedtest-cli || ( \
+    git clone https://github.com/sivel/speedtest-cli.git
+    cd speedtest-cli
+    sudo python ./setup.py install
+)

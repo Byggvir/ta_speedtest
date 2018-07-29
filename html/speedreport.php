@@ -29,6 +29,7 @@ if ($result = $mysqli->query($querylast)) {
   while ($row = $result->fetch_assoc()) {
 
 ?>
+
 <tr><td class="parameter">Ping:</td><td class="result"><?php echo sprintf("%0.3f",$row["ping"]); ?></td><td>ms</td></tr>
 <tr><td class="parameter">Download:</td><td class="result"><?php echo sprintf("%0.3f", $row["download"]/1000000) ; ?></td><td>MBit/s</td></tr>
 <tr><td class="parameter">Upload:</td><td class="result"><?php echo sprintf("%0.3f",$row["upload"]/1000000) ; ?></td><td>MBit/s</td></tr>
