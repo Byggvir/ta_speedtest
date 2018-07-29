@@ -32,7 +32,7 @@ For installation from GITHUB please install python-setuptools python3-setuptools
 ```bash
 sudo apt update
 sudo apt install python-setuptools python3-setuptools
-```bash
+```
 
 ## Installing speedtest-cli
 
