@@ -65,6 +65,7 @@ if ($result = $mysqli->query($querylast)) {
 <table class="verybig">
 <tr>
 <th>Datetime</th>
+<th>Adresse</th>
 <th>Min<br />[ms]</th>
 <th>avg<br />[ms]</th>
 <th>max<br />[ms]</th>
@@ -74,7 +75,7 @@ if ($result = $mysqli->query($querylast)) {
 
 
 <?php 
-$querylast= "SELECT * FROM pingreports ORDER BY start DESC LIMIT 10;";
+$querylast= "SELECT * FROM pingreports ORDER BY start DESC LIMIT 20;";
 
 /* Select queries return a resultset */
 if ($result = $mysqli->query($querylast)) {
@@ -85,6 +86,7 @@ if ($result = $mysqli->query($querylast)) {
 
 <tr>
 <td class="result"><?php echo $row["start"]; ?></td>
+<td class="result"><?php echo $row["url"]; ?></td>
 <td class="result"><?php echo sprintf("%0.3f",$row["minping"]); ?></td>
 <td class="result"><?php echo sprintf("%0.3f", $row["avgping"]) ; ?></td>
 <td class="result"><?php echo sprintf("%0.3f",$row["maxping"]) ; ?></td>
