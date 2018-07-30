@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Copyright 2018 Thomas Arend
+# All Rights Reserved.
+
+# Lizenz GPL 3.0
+
+DB='speedtest'
+DBUSER='speedreport'
+DBPASS='Ahsoo3feeshaeyae'  # <<<< provide your password for the database user. He must able to INSERT records in the report table.
+
+for URL in byggvir.de
+
+do
+# Normally the first packet has a longer RTT. The routers have to find a
+# way to the host, address and routing tables have to be updated. To avoid
+# this we send one packet to the host.
+
+ping -c 1 $URL > /dev/null
+
+# if [ "$?" = 0 ] then  
+
+# We transmit 10 packets to evrey host. You may send more, if you need more data.
+
+# I'm only interested in the summary in the last two lines. 
+# We strip the summary with sed to build a SQL INSERT statement.
+
+  RESULT=$( ping -qc 10 $URL  \
+  | grep -A 1 'transmitted' \
+  | sed 'N;s#/#,#g; s#[^0-9\,\.]*##g;' \
+  | sed 's#,\{2,\}#,#g' )
+
+  START=$( date --iso-8601=seconds )
+
+  SQL="INSERT INTO pingreports ( start , url, transmitted , received , lost , duration, minping , avgping , maxping , mdev ) VALUES (\"$START\",\"$URL\",$RESULT);"
+
+  # echo $SQL
+  echo $SQL | mysql -u "$DBUSER" -p$DBPASS -b "$DB"
+
+# fi
+
+done

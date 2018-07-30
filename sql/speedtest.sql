@@ -26,12 +26,12 @@ USE speedtest;
 -- Table structure for table `reports`
 --
 
-DROP TABLE IF EXISTS `reports`;
+DROP TABLE IF EXISTS `speedreports`;
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
-CREATE TABLE `reports` (
+CREATE TABLE `speedreports` (
 /* 1 */  id mediumint(9) NOT NULL AUTO_INCREMENT, 
 /* 2 */  serverID INT,
 /* 3 */  sponsor VARCHAR(64),
@@ -46,6 +46,30 @@ CREATE TABLE `reports` (
   PRIMARY KEY (`id`),
   KEY `start` (`start`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `reports`
+--
+
+DROP TABLE IF EXISTS `pingreports`;
+
+CREATE TABLE `pingreports` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `start` datetime DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `transmitted` int(11) DEFAULT NULL,
+  `received` int(11) DEFAULT NULL,
+  `lost` int(11) DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
+  `minping` double DEFAULT NULL,
+  `avgping` double DEFAULT NULL,
+  `maxping` double DEFAULT NULL,
+  `mdev` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `start` (`start`),
+  KEY `URL` (`URL`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 

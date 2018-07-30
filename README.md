@@ -51,7 +51,19 @@ sudo python setup.py install
 
 For more ways to install speedtest-cli see https://github.com/sivel/speedtest-cli/blob/master/README.rst. Be advised I have not tested them.
 
-# FAQ
+
+#Installation
+
+You may use install.sh on your own risk. It currently overrides an existing installation and deletes the database *speedtest* and the data.
+
+You should change the passwords in the following files before installing:
+
+* usr/local/speedreport
+* sql/speedreport.sql
+* html/speeddb.inc
+
+
+#FAQ
 ## Missing setup tools
 
 Error message from `sudo python setup.py` 
@@ -63,7 +75,7 @@ File "setup.py", line 22, in <module>
 ImportError: No module named setuptools
 ```
 
-Solution: Install python-setup-toopls and python3-setuptools. See above.
+Solution: Install python-setuptools and python3-setuptools. See above.
 
 ## Missing file speedtest.py
 
