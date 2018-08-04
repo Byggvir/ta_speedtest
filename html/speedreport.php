@@ -53,6 +53,7 @@ SpeedReportTableRows();
 PingReport();
 
 $mysqli->close();
+
 ?>
 </body>
 </html>

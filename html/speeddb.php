@@ -1,7 +1,6 @@
 <?php
 
 global $SpeedTest;
-
 isset($SpeedTest) or exit ("No direct calls!" ) ;
 
 $dbhost = "localhost";
