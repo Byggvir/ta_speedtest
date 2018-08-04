@@ -25,9 +25,9 @@ sudo apt install php7.0 php7.0-mysql
 sudo systemctp restart apache2
 ``` 
 
-## Installing setuptools for python on Debian / Raspberry Pi
+## Install setuptools for python on Debian / Raspberry Pi
 
-For installation from GITHUB please install python-setuptools python3-setuptools
+For installation of speedtest-cli from GITHUB please install python-setuptools python3-setuptools
 
 ```bash
 sudo apt update
@@ -63,28 +63,6 @@ You should change the passwords in the following files before installing:
 * html/speeddb.inc
 
 
-#FAQ
-## Missing setup tools
+# FAQ
 
-Error message from `sudo python setup.py` 
-
-```
-Traceback (most recent call last):
-File "setup.py", line 22, in <module>
-    from setuptools import setup
-ImportError: No module named setuptools
-```
-
-Solution: Install python-setuptools and python3-setuptools. See above.
-
-## Missing file speedtest.py
-
-Error message from *sudo python speedtest-cli/setup.py* after cloning the repository:
-
-```
-file speedtest.py (for module speedtest) not found
-file speedtest.py (for module speedtest) not found
-warning: install_lib: 'build/lib.linux-armv7l-2.7' does not exist -- no Python modules to install
-```
-
-Solution: Change to directory speedtest-cli and run *sudo python setup.py install*.
+See [FAQ.md](FAQ.md)

@@ -12,12 +12,13 @@ cp -r html/* /var/www/html/
 
 #3. Copy speedreport script
 
-cp usr/local/bin/* /usr/local/bin/
+cp -r usr/local/bin/* /usr/local/bin/
 
 #4. Add crontab
 grep 'speedreport' /etc/crontab \
 || cat >> /etc/crontab <<EOF
-*/10 *  * * *   root    /usr/local/bin/speedreport
+#5 *  * * *   root    /usr/local/bin/speedreport
+#*/10 *  * * *   root    /usr/local/bin/pingreport
 EOF
 
 type speedtest-cli >/dev/null || ( \

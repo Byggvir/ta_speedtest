@@ -5,12 +5,22 @@
 
 # Lizenz GPL 3.0
 
+# Version 0.1.1
+#
+# Changes: 
+#
+# Column pipe added to ping reports
+
 DB='speedtest'
+DBHOST='localhost'
+DBVIEWUSER='speedviewer' # <<
+DBVIEWPASS='Ahsoo3feeshaeyae' # <<
 DBUSER='speedreport'
-DBPASS='Ahsoo3feeshaeyae'  # <<<< provide your password for the database user. He must able to INSERT records in the report table.
+DBPASS='Ahsoo3feeshaeyae'  # << provide your password for the database user. He must able to INSERT records in the report table.
 
-for URL in byggvir.de
+LIST=$( echo "SELECT url FROM urllist;" | mysql -u "$DBVIEWUSER" -p$DBVIEWPASS -b -N speedtest )
 
+for URL in $LIST
 do
 # Normally the first packet has a longer RTT. The routers have to find a
 # way to the host, address and routing tables have to be updated. To avoid
@@ -25,17 +35,17 @@ ping -c 1 $URL > /dev/null
 # I'm only interested in the summary in the last two lines. 
 # We strip the summary with sed to build a SQL INSERT statement.
 
-  RESULT=$( ping -qc 10 $URL  \
-  | grep -A 1 'transmitted' \
-  | sed 'N;s#/#,#g; s#[^0-9\,\.]*##g;' \
-  | sed 's#,\{2,\}#,#g' )
+    RESULT=$( ping -qc 10 $URL  \
+    | grep -A 1 'transmitted' \
+    | sed '/rtt/ { /ms, pipe/! s#$#, 0#}'  \
+    | sed 'N;s#/#,#g; s#[^0-9\,\.]*##g;' \
+    | sed 's#,\{2,\}#,#g' )
 
-  START=$( date --iso-8601=seconds )
+    START=$( date --iso-8601=seconds )
 
-  SQL="INSERT INTO pingreports ( start , url, transmitted , received , lost , duration, minping , avgping , maxping , mdev ) VALUES (\"$START\",\"$URL\",$RESULT);"
+    SQL="INSERT INTO pingreports ( start , url, transmitted , received , lost , duration, minping , avgping , maxping , mdev, pipe ) VALUES (\"$START\",\"$URL\",$RESULT);"
 
-  # echo $SQL
-  echo $SQL | mysql -u "$DBUSER" -p$DBPASS -b "$DB"
+    echo $SQL | mysql -u "$DBUSER" -p$DBPASS -b "$DB"
 
 # fi
 

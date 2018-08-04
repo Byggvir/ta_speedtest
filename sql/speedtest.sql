@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS `speedreports`;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `speedreports` (
-/* 1 */  id mediumint(9) NOT NULL AUTO_INCREMENT, 
+/* 1 */  id bigint(10) NOT NULL AUTO_INCREMENT, 
 /* 2 */  serverID INT,
 /* 3 */  sponsor VARCHAR(64),
 /* 4 */  server VARCHAR(64),
@@ -65,11 +65,22 @@ CREATE TABLE `pingreports` (
   `avgping` double DEFAULT NULL,
   `maxping` double DEFAULT NULL,
   `mdev` double DEFAULT NULL,
+  `pipe` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `start` (`start`),
-  KEY `URL` (`URL`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  KEY `url` (`url`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
+DROP TABLE IF EXISTS `urllist`;
+
+CREATE TABLE `urllist` ( 
+  `id` mediumint(9) primary key NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) DEFAULT "127.0.0.1"  COMMENT "FQDN or IP-address",
+  `counts` int(11) DEFAULT 10  COMMENT "Number of packets to send",
+  KEY `url` (`url`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ;
+
+INSERT INTO `urllist` (url,counts) VALUES ("localhost",10);
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 

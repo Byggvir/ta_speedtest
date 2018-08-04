@@ -8,6 +8,6 @@ $dbuser = "speedviewer";
 $dbpass = "Ahsoo3feeshaeyae";
 $dbdb   = "speedtest";
 
-$mysqli = new mysqli($dbhost, $dbuser,$dbpass,$dbdb);
+$mysqli = new mysqli($dbhost, $dbuser,$dbpass,$dbdb) or die();
 
 ?>

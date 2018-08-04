@@ -14,9 +14,24 @@
 
 </head>
 <body>
-<h1>Speedtest-Reports</h1>
 
-<p>Lastest result</p>
+<?php
+
+// $STLoaded = True;
+
+include_once 'speeddb.inc';
+
+/* Report the speedtest results */
+
+function speedreport () {
+  
+  global $mysqli;
+  
+?>
+
+<h1>Ookla Speedtest-Reports</h1>
+
+<p>Results of the last ten tests</p>
 
 <table class="verybig">
 <tr>
@@ -28,83 +43,105 @@
 
 <?php
 
-// $STLoaded = True;
+  $queryspeed = "SELECT * FROM speedreports ORDER BY start DESC LIMIT 10;";
 
-include_once 'speeddb.inc';
-
-$querylast= "SELECT * FROM speedreports ORDER BY start DESC LIMIT 10;";
-
-/* Select queries return a resultset */
-if ($result = $mysqli->query($querylast)) {
+  /* Select queries return a resultset */
+  if ($speedresult = $mysqli->query($queryspeed)) {
  
-  while ($row = $result->fetch_assoc()) {
+    while ($speed = $speedresult->fetch_assoc()) {
 
 ?>
 
 <tr>
-<td class="result"><?php echo $row["start"]; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$row["ping"]); ?></td>
-<td class="result"><?php echo sprintf("%0.3f", $row["download"]/1000000) ; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$row["upload"]/1000000) ; ?></td>
-
+<td class="result"><?php echo $speed["start"]; ?></td>
+<td class="result"><?php echo sprintf("%0.3f",$speed["ping"]); ?></td>
+<td class="result"><?php echo sprintf("%0.3f", $speed["download"]/1000000) ; ?></td>
+<td class="result"><?php echo sprintf("%0.3f",$speed["upload"]/1000000) ; ?></td>
 </tr>
 <?php
 
-  }
+    } /* end while */ 
 
-  /* free result set */
-  $result->close();
+    /* free result set */
+    $speedresult->close();
 
-}
+  } /* end if */
+  
+  echo "</table>\n" ;
+
+} /* end of speedreport */
+
+function pingreport_by_url($mysqli,$url) {
+  
+  global $mysqli;
+  
 ?>
-</table>
-
-
-<p>Lastest ping results:</p>
-
 <table class="verybig">
 <tr>
 <th>Datetime</th>
-<th>Adresse</th>
-<th>Min<br />[ms]</th>
+<th>Address</th>
+<th>min<br />[ms]</th>
 <th>avg<br />[ms]</th>
 <th>max<br />[ms]</th>
 <th>mdev<br />[ms]</th>
 <tr>
-
-
-
 <?php 
-$querylast= "SELECT * FROM pingreports ORDER BY start DESC LIMIT 20;";
 
-/* Select queries return a resultset */
-if ($result = $mysqli->query($querylast)) {
+  $queryping="SELECT * FROM pingreports WHERE url='$url' ORDER BY start DESC LIMIT 20;";
+
+  /* Select queries return a resultset */
+  if ($pingresult = $mysqli->query($queryping)) {
  
-  while ($row = $result->fetch_assoc()) {
+    while ($ping = $pingresult->fetch_assoc()) {
 
 ?>
-
 <tr>
-<td class="result"><?php echo $row["start"]; ?></td>
-<td class="result"><?php echo $row["url"]; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$row["minping"]); ?></td>
-<td class="result"><?php echo sprintf("%0.3f", $row["avgping"]) ; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$row["maxping"]) ; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$row["mdev"]) ; ?></td>
+<td class="result"><?php echo $ping["start"]; ?></td>
+<td class="result"><?php echo $ping["url"]; ?></td>
+<td class="result"><?php echo sprintf("%0.3f",$ping["minping"]); ?></td>
+<td class="result"><?php echo sprintf("%0.3f", $ping["avgping"]) ; ?></td>
+<td class="result"><?php echo sprintf("%0.3f",$ping["maxping"]) ; ?></td>
+<td class="result"><?php echo sprintf("%0.3f",$ping["mdev"]) ; ?></td>
 </tr>
 <?php
 
-  }
+    } /* end while */
 
-  /* free result set */
-  $result->close();
+    /* free result set */
+    $pingresult->close();
 
-}
+  } /* end if */
+
+echo "</table>\n" ;
+
+} /* End of pingreport_by_url */
+
+function pingreport ($mysqli) {
+   
+  global $mysqli;
+ 
+  $urlquery="SELECT DISTINCT url FROM pingreports ORDER BY url;";
+
+  echo "<h1>Results of the last ten ping test ordered by URL</h1>";
+  if ($urlresult = $mysqli->query($urlquery)) {
+ 
+    while ($urllist = $urlresult->fetch_assoc()) {
+
+      echo "<h2>" . $urllist["url"] . "</h2>";
+      pingreport_by_url($mysqli,$urllist["url"]);
+    }/* end while */
+
+    $urlresult->close();
+    
+  } /* end if */
+
+} /* End of pingreport */
+
+
+speedreport();
+pingreport();
 
 $mysqli->close();
-
 ?>
-</table>
-
 </body>
 </html>
