@@ -59,6 +59,7 @@ CREATE TABLE `pingreports` (
   `url` varchar(255) DEFAULT NULL,
   `transmitted` int(11) DEFAULT NULL,
   `received` int(11) DEFAULT NULL,
+  `errors` int(11) DEFAULT NULL,
   `lost` int(11) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
   `minping` double DEFAULT NULL,
