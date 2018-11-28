@@ -1,6 +1,7 @@
 <?php
 
-// isset($STLoaded) or die ;
+global $SpeedTest;
+isset($SpeedTest) or exit ("No direct calls!" ) ;
 
 $dbhost = "localhost";
 $dbname = "speedtest";
