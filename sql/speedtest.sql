@@ -81,7 +81,7 @@ CREATE TABLE `urllist` (
   KEY `url` (`url`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ;
 
-INSERT INTO `urllist` (url,counts) VALUES ("localhost",10);
+INSERT INTO `urllist` (url,counts) VALUES ("byggvir.de",10);
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
