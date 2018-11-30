@@ -29,12 +29,12 @@ function PingReportByUrl($url) {
 
 ?>
 <tr>
-<td class="result"><?php echo $ping["start"]; ?></td>
-<td class="result"><?php echo $ping["url"]; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$ping["minping"]); ?></td>
-<td class="result"><?php echo sprintf("%0.3f", $ping["avgping"]) ; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$ping["maxping"]) ; ?></td>
-<td class="result"><?php echo sprintf("%0.3f",$ping["mdev"]) ; ?></td>
+<td class="result colstart"><?php echo $ping["start"]; ?></td>
+<td class="result colurl"><?php echo $ping["url"]; ?></td>
+<td class="result colminping"><?php echo sprintf("%0.3f",$ping["minping"]); ?></td>
+<td class="result colavgping"><?php echo sprintf("%0.3f", $ping["avgping"]) ; ?></td>
+<td class="result colmaxping"><?php echo sprintf("%0.3f",$ping["maxping"]) ; ?></td>
+<td class="result colmdev"><?php echo sprintf("%0.3f",$ping["mdev"]) ; ?></td>
 </tr>
 <?php
 

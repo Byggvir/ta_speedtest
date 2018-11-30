@@ -29,10 +29,83 @@ td {
 }
 
 .parameter {
-  background : lightgray ;
+
+    background : lightgray ;
 
 }
 
 .result {
-  text-align : right ;
+
+    text-align : right ;
+
 }
+
+.colstart {
+
+    text-align : center;
+    
+}
+
+.colurl {
+    
+    width : 18em;
+    text-align: left;
+
+    
+}
+
+.coltransmitted {
+    
+}
+
+.colreceived
+ {
+    
+}
+
+.collost {
+
+    color: red;
+
+
+}
+
+.colduration {
+    
+}
+
+.colminping {
+    width : 5em;
+    color : green;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    
+}
+
+.colavgping {
+    width : 5em;
+    color : darkblue;
+    font-weight : bold;
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
+
+.colmaxping {
+    width : 5em;
+    color : red;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    
+}
+
+.colmdev {
+    width : 5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    
+}
+
+.colpipe
+ {
+     
+ }

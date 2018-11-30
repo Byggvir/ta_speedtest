@@ -26,7 +26,8 @@ do
 # way to the host, address and routing tables have to be updated. To avoid
 # this we send one packet to the host.
 
-echo $URL
+# Uncomment the next line to view URL
+# echo $URL
 
 ping -c 1 $URL > /dev/null
 
@@ -47,7 +48,9 @@ ping -c 1 $URL > /dev/null
     START=$( date --iso-8601=seconds )
 
     SQL="INSERT INTO pingreports ( start , url, transmitted , received , lost , duration, minping , avgping , maxping , mdev, pipe ) VALUES (\"$START\",\"$URL\",$RESULT);"
-    echo $SQL
+
+# Uncomment next line to view the generated SQL statement
+#    echo $SQL
 
     echo $SQL | mysql -u "$DBUSER" -p$DBPASS -b "$DB"
 
