@@ -21,20 +21,43 @@ function PingReportByUrl($url) {
 <?php 
 
   $PingQuery="SELECT * FROM pingreports WHERE url='$url' ORDER BY start DESC LIMIT 20;";
+  $AvgQuery="SELECT min(minping) as minmin, avg(avgping) as avgavg, max(maxping) as maxmax ,avg(mdev) as avgmdev FROM pingreports WHERE url='$url';";
 
   /* Select queries return a resultset */
+  if ($PingResult = $mysqli->query($AvgQuery)) {
+ 
+    while ($ping = $PingResult->fetch_assoc()) {
+
+?>
+<tr class="rowsummary">
+<td class="resultleft" colspan="2">Min/Avg/Max/Avg of all pingreports</td>
+<td class="resultright colminping"><?php echo sprintf("%0.3f",$ping["minmin"]); ?></td>
+<td class="resultright colavgping"><?php echo sprintf("%0.3f", $ping["avgavg"]) ; ?></td>
+<td class="resultright colmaxping"><?php echo sprintf("%0.3f",$ping["maxmax"]) ; ?></td>
+<td class="resultright colmdev"><?php echo sprintf("%0.3f",$ping["avgmdev"]) ; ?></td>
+</tr>
+<?php
+
+    } /* end while */
+
+    /* free result set */
+    $PingResult->close();
+
+  } /* end if */
+  /* Select queries return a resultset */
+
   if ($PingResult = $mysqli->query($PingQuery)) {
  
     while ($ping = $PingResult->fetch_assoc()) {
 
 ?>
 <tr>
-<td class="result colstart"><?php echo $ping["start"]; ?></td>
-<td class="result colurl"><?php echo $ping["url"]; ?></td>
-<td class="result colminping"><?php echo sprintf("%0.3f",$ping["minping"]); ?></td>
-<td class="result colavgping"><?php echo sprintf("%0.3f", $ping["avgping"]) ; ?></td>
-<td class="result colmaxping"><?php echo sprintf("%0.3f",$ping["maxping"]) ; ?></td>
-<td class="result colmdev"><?php echo sprintf("%0.3f",$ping["mdev"]) ; ?></td>
+<td class="resultleft colstart"><?php echo $ping["start"]; ?></td>
+<td class="resultleft colurl"><?php echo $ping["url"]; ?></td>
+<td class="resultright colminping"><?php echo sprintf("%0.3f",$ping["minping"]); ?></td>
+<td class="resultright colavgping"><?php echo sprintf("%0.3f", $ping["avgping"]) ; ?></td>
+<td class="resultright colmaxping"><?php echo sprintf("%0.3f",$ping["maxping"]) ; ?></td>
+<td class="resultright colmdev"><?php echo sprintf("%0.3f",$ping["mdev"]) ; ?></td>
 </tr>
 <?php
 
