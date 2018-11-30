@@ -35,14 +35,48 @@ td {
 }
 
 .result {
+    text-align : center ;
+    
+}
 
+.resultleft {
+    text-align : left ;
+    
+}
+
+.resultright {
     text-align : right ;
+    
+}
 
+.rowsummary {
+    font-weight: bolder;
+    
 }
 
 .colstart {
+    text-align : center
+    
+}
 
-    text-align : center;
+.colping {
+    width : 5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    
+}
+
+.coldownload {
+    width : 5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    
+}
+
+.colupload {
+    width : 5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
     
 }
 

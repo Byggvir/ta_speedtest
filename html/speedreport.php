@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <?php
 
+/*
+ * Autor: Thomas Arend
+ * Stand: 30.12.2018
+ *
+ * Better quick and dirty than perfect but never!
+ *
 /* Security token to detect direct calls of included libraries. */ 
 
 $SpeedTest = "Started";
@@ -55,5 +61,7 @@ PingReport();
 $mysqli->close();
 
 ?>
+<hr />
+<p>(c) Thomas Arend / <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GNU General Public License v3.0</a></a>
 </body>
 </html>

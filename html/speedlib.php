@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Autor: Thomas Arend
+ * Stand: 30.12.2018
+ *
+ * Better quick and dirty than perfect but never!
+ *
+ * Securety check: Nod direct calls are allowd 
+ */
+
 global $SpeedTest;
 isset($SpeedTest) or exit ("No direct calls!" ) ;
 
