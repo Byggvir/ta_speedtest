@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-/* Security token to detect direct calls of includes libraries. */ 
+/* Security token to detect direct calls of included libraries. */ 
 
 $SpeedTest = "Started";
 
