@@ -41,6 +41,7 @@ This solution is based on speedtest-cli from sivel. You will find it at https://
 ### How to install speedtest-cli
 
 (At the time of writing:) There is a mistake in the installation procedure from sivel. See: https://github.com/sivel/speedtest-cli/issues/529
+
 Please use the following commands to install speedtest-cli. 
 
 ```
@@ -51,14 +52,18 @@ sudo python setup.py install
 
 For more ways to install speedtest-cli see https://github.com/sivel/speedtest-cli/blob/master/README.rst. Be advised I have not tested them.
 
+The installation script will do this for you.
 
 #Installation
 
-You may use install.sh on your own risk. It currently overrides an existing installation and deletes the database *speedtest* and the data.
+You may use install.sh on your own risk. It currently overrides an existing installation and deletes the database *speedtest*, the data and the three requires users.
 
-You should change the passwords in the following files before installing:
+The script creates passwords for three database users and updates the files.
+
+You could change the passwords (P@ssW0rd{1,2,3}) in the following files if you install the files manually:
 
 * usr/local/speedreport
+* usr/local/pingreport
 * sql/speedreport.sql
 * html/speeddb.inc
 

@@ -15,7 +15,7 @@ DB='speedtest'
 DBHOST='localhost'
 
 DBUSER='speedreport'
-DBPASS='P@ssW0rd3'  # << provide your password for the database user. He must able to INSERT records in the report table.
+DBPASS='P@ssW0rd2'  # << provide your password for the database user. He must able to INSERT records in the report table.
 
 DBVIEWUSER='speedviewer' # << provide your password for the database user. He must able to SELECT records from the report table.
 DBVIEWPASS='P@ssW0rd3' # <<

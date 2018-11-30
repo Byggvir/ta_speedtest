@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Copyright 2018 Thomas Arend
+# All Rights Reserved.
+
+# Lizenz GPL 3.0
+
+type speedtest-cli >/dev/null 2>&1 || ( echo -e "Speedtest not found.\nPlease install speedtest-cli from https://github.com/sivel/speedtest-cli.git"  ; exit )
+
+DB='speedtest'
+DBUSER='speedreport'
+DBPASS='P@ssW0rd2'  # <<<< provide your password for the database user. He must able to INSERT records in the report table.
+
+RESULT=$( speedtest-cli --csv --share |  sed 's#^#"#; s#,#","#g; s#"\([0-9\.]+\)"#\1#g; s#$#"#' )
+
+SQL="INSERT INTO speedreports (serverID, sponsor, server, start, distance, ping, download, upload, shareurl, ip) VALUES ( ${RESULT} );"
+
+echo $SQL \
+| tr -d '\n' \
+| mysql -u $DBUSER -p$DBPASS -b $DB
+
