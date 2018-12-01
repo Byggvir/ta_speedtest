@@ -25,7 +25,7 @@ then
     for i in 1 2 3 ; do echo -e "s/P@ssW0rd${i}/$(pwgen -s 32 1)/" ; done >$NEWPWD 
 else
     # As an alternate we use dd and base64
-    for i in 1 2 3 ; do echo -e "s/P@ssW0rd${i}/$(dd if=/dev/urandom bs=32 count=1 | base64| sed 'y#=#x#')/" ; done >$NEWPWD 
+    for i in 1 2 3 ; do echo -e "s/P@ssW0rd${i}/$(dd if=/dev/urandom bs=32 count=1 | base64| sed 's#/=##g')/" ; done >$NEWPWD 
 fi
 
 # 3. Update all files with passwords

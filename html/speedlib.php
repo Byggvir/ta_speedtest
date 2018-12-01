@@ -57,7 +57,7 @@ function SpeedReportTableRows () {
 <td class="result colstart">Averages</td>
 <td class="resultright colping"><?php echo sprintf("%0.3f",$speed["avgping"]); ?></td>
 <td class="resultright coldownload"><?php echo sprintf("%0.3f", $speed["avgdownload"]/1000000) ; ?></td>
-<td class="resultright colupload"><?php echo sprintf("%0.3f",$speed["avgdownload"]/1000000) ; ?></td>
+<td class="resultright colupload"><?php echo sprintf("%0.3f",$speed["avgupload"]/1000000) ; ?></td>
 </tr>
 <?php
 
